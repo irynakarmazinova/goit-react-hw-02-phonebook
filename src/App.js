@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+// import { v4 as uuidv4 } from 'uuid';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Title from './components/Title';
+import Form from './components/Form';
+
+import './App.scss';
+
+// var classNames = require('classnames');
+
+class App extends Component {
+  state = {
+    contacts: [],
+  };
+
+  handleBtnSubmit = e => {
+    e.preventDefault();
+
+    // this.props.onSubmit(this.state.name);
+  };
+
+  render() {
+    const { contacts } = this.state;
+
+    return (
+      <div className="container">
+        <h1 className="visually_hidden">Contacts book</h1>
+        <Title title="Phonebook" />
+        <Form />
+
+        <Title title="Contacts" />
+        <ul>
+          <li>{contacts}</li>
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default App;
+// ---------------------------------------------------
+// использовать именованные импорты и экспорты
+// import {Button}
+// export {Button}
