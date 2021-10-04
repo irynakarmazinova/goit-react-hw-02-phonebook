@@ -26,38 +26,28 @@ class App extends Component {
     filter: '',
   };
 
-  // contactNameInputId = uuidv4();
-  // contactInputId = uuidv4();
-
-  // addContact = (name, number ) => {
-  addContact = inputText => {
-    const contact = {
+  addContact = ({ name, number }) => {
+    const newContact = {
       id: uuidv4(),
-      inputText,
-      // name,
-      // number,
+      name,
+      number,
     };
 
-    // this.setState(prevState => ({
-    //   contacts: [contact, ...prevState.contacts],
-    // }));
-
-    this.setState(prevState => {
-      console.log(...prevState.contacts);
-      return {
-        contacts: [contact, ...prevState.contacts],
-      };
-    });
+    this.setState(prevState => ({
+      contacts: [newContact, ...prevState.contacts],
+      // contacts: [...prevState.contacts, newContact],
+    }));
   };
 
-  deleteContact = contactId => {
+  deleteContact = id => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
+    // this.setState({ filter: e.target.value });
   };
 
   // делает видимым тот контакт, который соответствует тексту поиска в инпуте
@@ -67,10 +57,8 @@ class App extends Component {
 
     // "qweqwe".includes(" ")//когда пустой инпут что бы возвращало не весь массив сонтактов, а было пусто. а когда идет запрос, что бы возвращало по запросу нужные отфильтрованные контакты
 
-    return contacts.filter(
-      contact =>
-        contact.inputText.name.toLowerCase().includes(filter.toLowerCase()),
-      // contact.name.toLowerCase().includes(filter.toLowerCase()),
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()),
     );
   };
 

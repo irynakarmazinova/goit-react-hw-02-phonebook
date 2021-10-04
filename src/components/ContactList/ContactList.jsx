@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import s from './ContactList.module.scss';
 
 // со свойства props деструктуризирую свойство contacts
-const Contacts = ({ onDeleteContact, visibleContacts }) => (
+const ContactList = ({ onDeleteContact, visibleContacts }) => (
   <ul className={s.list}>
-    {visibleContacts.map(({ id, inputText: { name, number } }) => (
-      // {visibleContacts.map(({ id, name, number }) => (
-
+    {visibleContacts.map(({ id, name, number }) => (
       <li key={id} className={s.item}>
         <div className={s.box}>
           <p className={s.name}>{name}:</p>
@@ -21,4 +19,9 @@ const Contacts = ({ onDeleteContact, visibleContacts }) => (
   </ul>
 );
 
-export default Contacts;
+ContactList.propTypes = {
+  onDeleteContact: PropTypes.func.isRequired,
+  visibleContacts: PropTypes.array.isRequired,
+};
+
+export default ContactList;

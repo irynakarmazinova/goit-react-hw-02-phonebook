@@ -27,8 +27,6 @@ class Form extends Component {
     this.reset();
   };
 
-  // blur = () => {};
-
   reset = () => {
     this.setState({ name: '', number: '' });
   };
@@ -52,7 +50,6 @@ class Form extends Component {
           Name
           <input
             autoFocus
-            // onMouseOut="this.blur()"
             type="text"
             name="name"
             value={name}
@@ -66,7 +63,6 @@ class Form extends Component {
         <label className={s.label}>
           Number
           <input
-            // onMouseOut="this.blur()"
             type="tel"
             name="number"
             value={number}
