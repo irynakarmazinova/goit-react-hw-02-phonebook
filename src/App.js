@@ -27,16 +27,20 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const newContact = {
+    const { contacts } = this.state;
+    const contact = {
       id: uuidv4(),
       name,
       number,
     };
 
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
-      // contacts: [...prevState.contacts, newContact],
-    }));
+    contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
+      ? alert(`${name} is already in contacts.`)
+      : //   alert(`${contact.name} is already in contacts.`);
+        this.setState(prevState => ({
+          contacts: [contact, ...prevState.contacts],
+          // contacts: [...prevState.contacts, contact],
+        }));
   };
 
   deleteContact = id => {
@@ -53,7 +57,6 @@ class App extends Component {
   // делает видимым тот контакт, который соответствует тексту поиска в инпуте
   getVisibleContact = () => {
     const { contacts, filter } = this.state;
-    // const toLowerCaseFilter = filter.toLowerCase();
 
     // "qweqwe".includes(" ")//когда пустой инпут что бы возвращало не весь массив сонтактов, а было пусто. а когда идет запрос, что бы возвращало по запросу нужные отфильтрованные контакты
 

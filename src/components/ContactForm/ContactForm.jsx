@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import s from './ContactForm.module.scss';
 
 class Form extends Component {
@@ -21,7 +20,6 @@ class Form extends Component {
   handleBtnSubmit = e => {
     e.preventDefault();
 
-    // this.props.onSubmit(this.state.name);
     this.props.onSubmit(this.state);
 
     this.reset();
