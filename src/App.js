@@ -55,7 +55,7 @@ class App extends Component {
   };
 
   // делает видимым тот контакт, который соответствует тексту поиска в инпуте
-  getVisibleContact = () => {
+  visibleContacts = () => {
     const { contacts, filter } = this.state;
 
     // "qweqwe".includes(" ")//когда пустой инпут что бы возвращало не весь массив сонтактов, а было пусто. а когда идет запрос, что бы возвращало по запросу нужные отфильтрованные контакты
@@ -67,8 +67,8 @@ class App extends Component {
 
   render() {
     const { filter } = this.state;
-    const { addContact, changeFilter, deleteContact } = this;
-    const visibleContacts = this.getVisibleContact();
+    const { addContact, changeFilter, deleteContact, visibleContacts } = this;
+    // const visibleContacts = this.getVisibleContact();
 
     return (
       <div className="container">
