@@ -34,7 +34,7 @@ class App extends Component {
       number,
     };
 
-    contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
+    contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
       ? alert(`${name} is already in contacts.`)
       : //   alert(`${contact.name} is already in contacts.`);
         this.setState(prevState => ({
@@ -67,10 +67,8 @@ class App extends Component {
 
   render() {
     const { filter } = this.state;
-    const addContact = this.addContact;
-    const changeFilter = this.changeFilter;
+    const { addContact, changeFilter, deleteContact } = this;
     const visibleContacts = this.getVisibleContact();
-    const deleteContact = this.deleteContact;
 
     return (
       <div className="container">
