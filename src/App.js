@@ -60,8 +60,10 @@ class App extends Component {
 
     // "qweqwe".includes(" ")//когда пустой инпут что бы возвращало не весь массив сонтактов, а было пусто. а когда идет запрос, что бы возвращало по запросу нужные отфильтрованные контакты
 
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()),
+    return contacts.filter(
+      contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase()) ||
+        contact.number.includes(filter),
     );
   };
 
@@ -69,7 +71,7 @@ class App extends Component {
     const { filter } = this.state;
     const { addContact, changeFilter, deleteContact, visibleContacts } = this;
     // const visibleContacts = this.getVisibleContact();
-
+    console.log(this.state.contacts);
     return (
       <div className="container">
         <h1 className="visually_hidden">Phonebook</h1>

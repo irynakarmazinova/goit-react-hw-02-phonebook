@@ -7,7 +7,6 @@ const Filter = ({ value, onChange }) => (
     Find contacts by name
     <input
       type="text"
-      // как искать и по номеру?
       value={value}
       onChange={onChange}
       className={s.input}
